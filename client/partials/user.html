@@ -1,0 +1,13 @@
+<div ng-controller="UserProfileController">
+  <div class="headerLeft">
+    <a href="#/dashboard">Dashboard</a>
+    <a href="#/">Logout</a>
+  </div>
+  <h3>Username: {{user.name}}</h3>
+  <h3>Posted:</h3>
+  <div class="indent">
+    <h4>{{user._topics.length}} Topic</h4>
+    <h4>{{user._answers.length}} Answers</h4>
+    <h4>{{user._comments.length}} Comment</h4>
+  </div>
+</div>

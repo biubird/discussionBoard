@@ -1,0 +1,46 @@
+<div ng-controller="DashboardsController">
+  <!-- {{}} -->
+
+<h4>Welcome to the Discussion {{currentUser.name}}!</h4>
+<div class="dashHeader">
+  <label for="search">Filter Topics:</label>
+  <input type="text" ng-model="search">
+  <a href="#/">Logout</a>
+</div>
+<table>
+  <tr>
+    <th>Category</th>
+    <th>Topic</th>
+    <th>User Name</th>
+    <th>Posts</th>
+  </tr>
+  <tr ng-repeat="topic in allTopics | filter: search | orderBy: '-createdAt'">
+    <td>{{topic.category}}</td>
+    <td><a href="#/topic/{{topic._id}}">{{topic.discussion}}</a></td>
+    <td><a href="#/user/{{topic._user._id}}">{{topic._user.name}}</a></td>
+    <td>{{topic._answers.length}}</td>
+  </tr>
+</table>
+
+<h3>Add a New Topic</h3>
+<form ng-submit="createTopic()">
+  <p>
+    <label for="discussion">Topic:</label>
+    <input type="text" name="discussion" ng-model="newTopic.discussion">
+  </p>
+  <p>
+    <label for="description">Description:</label>
+    <input type="text" name="description" ng-model="newTopic.description">
+  </p>
+  <p>
+    <label for="category">Category:</label>
+    <select name="category" ng-model="newTopic.category">
+      <option value="macros">Macros</option>
+      <option value="recipes">Recipes</option>
+      <option value="side-effects">Side-Effects</option>
+      <option value="general">General</option>
+    </select>
+  </p>
+  <input type="submit" name="submit">
+</form>
+</div>

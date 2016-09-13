@@ -1,0 +1,42 @@
+<style>
+      table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+      }
+      td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+      }
+      tr:nth-child(even) {
+          background-color: #dddddd;
+      }
+      .headerLeft{
+        display: inline;
+        margin-left: 700px;
+      }
+      .indent{
+        margin-left: 40px;
+      }
+      .dashHeader{
+        margin-left: 200px;
+      }
+      .dashHeader a{
+        margin-left: 50px;
+      }
+      img.happy{
+        height: 40px;
+        width: 40px;
+      }
+      img.sad{
+        height: 40px;
+        width: 40px;
+      }
+      .answer p, .answer img{
+        display: inline;
+      }
+      .likedislike{
+        margin-left: 200px;
+      }
+</style>

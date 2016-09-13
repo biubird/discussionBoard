@@ -1,0 +1,21 @@
+{
+  "name": "DiscussionBoard",
+  "authors": [
+    "Cameron Mullins <cmully@yahoo.com>"
+  ],
+  "description": "Discussion Board for Riot Nutrition App",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-route": "^1.5.8"
+  }
+}

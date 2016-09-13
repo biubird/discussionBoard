@@ -1,0 +1,32 @@
+<div ng-controller="TopicsController">
+  <div class="headerLeft">
+    <a href="#/dashboard">Dashboard</a>
+    <a href="#/">Logout</a>
+  </div>
+  <h3>
+    <a href="#/user/{{topic._user._id}}">{{topic._user.name}}</a> posted a topic:
+  </h3>
+  <h4>
+    {{topic.discussion}}
+  </h4>
+  <h5>
+    Description: {{topic.description}}
+  </h5>
+  <h3>Respond Here:</h3>
+  <input type="text" name="answer" ng-model="answer">
+  <input type="button" ng-click="createAnswer()" value="Post">
+  <h3>Previous answers:</h3>
+
+  <div ng-repeat="answer in allAnswers" class="answer">
+    <p>
+      <a href="#/user/{{answer._user._id}}">{{answer._user.name}}</a>: {{answer.answer}}
+      <div class="likedislike">
+        {{answer.likes}}<img src="./assests/happy.png" class="happy" ng-click="like()" />
+        {{answer.dislikes}}<img src="./assests/sad1.png" class="sad" ng-click="dislike()" />
+      </div>
+    </p>
+    <div style='margin-left: 20px' ng-repeat="comment in Comments">
+
+    </div>
+  </div>
+</div>

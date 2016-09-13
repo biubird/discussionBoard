@@ -1,0 +1,9 @@
+<div ng-controller="UsersController">
+  {{UC}}
+
+  <h1>Welcome! Please enter your name to join in on the discussion</h1>
+    <form ng-submit="createUser()">
+      <input type="text" name="name" ng-model="newUser.name">
+      <input type="submit" value="submit">
+    </form>
+</div>
