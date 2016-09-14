@@ -11,7 +11,6 @@ app.use(bp.json());
 require('./server/config/mongoose.js');
 require('./server/config/routes.js')(app);
 
-app.listen(6789, function() {
-  console.log('Listening on 6789');
+app.listen(8000, function() {
+  console.log('Listening on 8000');
 })
-    
