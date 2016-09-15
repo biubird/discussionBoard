@@ -33,17 +33,54 @@ module.exports = (function(){
       // console.log(req.params);
       Answer.find({_topic: req.params.id})
           .populate('_user')
-          .exec(function(err, answers){
+          .populate('_comments')
+          .exec(function(err, almostanswers){
             if(err){
               console.log(err);
             }else{
-              res.json(answers);
+              User.populate(almostanswers, {path: '_comments._user', model: 'User'}, function(err, answers){
+                if (err){
+                  console.log(err);
+                }else{
+                  res.json(answers);
+                }
+              })
             }
           })
     },//show fx close
     like: function(req, res){
+      Answer.findOne({_id: req.params.id}, function(err, answer){
+        if (err){
+          console.log(err);
+        }else{
+          likes = answer.likes += 1;
+          Answer.findByIdAndUpdate(req.params.id, {$set: {likes: likes}}, function(err){
+            if (err){
+              console.log(err);
+            }else{
+              res.redirect('/answers/'+answer._topic);
+            }
+          })
+        }
+      })
 
-    }//close of like fx
+    },//close of like fx
+    dislike: function(req, res){
+      Answer.findOne({_id: req.params.id}, function(err, answer){
+        if (err){
+          console.log(err);
+        }else{
+          dislikes = answer.dislikes += 1;
+          Answer.findByIdAndUpdate(req.params.id, {$set: {dislikes: dislikes}}, function(err){
+            if (err){
+              console.log(err);
+            }else{
+              res.redirect('/answers/'+answer._topic);
+            }
+          })
+        }
+      })
+    }//close of dislike fx
 
 
   }//return close

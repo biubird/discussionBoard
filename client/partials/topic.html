@@ -17,16 +17,22 @@
   <input type="button" ng-click="createAnswer()" value="Post">
   <h3>Previous answers:</h3>
 
-  <div ng-repeat="answer in allAnswers" class="answer">
+  <div ng-repeat="answer in allAnswers track by $index" class="answer">
     <p>
       <a href="#/user/{{answer._user._id}}">{{answer._user.name}}</a>: {{answer.answer}}
       <div class="likedislike">
-        {{answer.likes}}<img src="./assests/happy.png" class="happy" ng-click="like()" />
-        {{answer.dislikes}}<img src="./assests/sad1.png" class="sad" ng-click="dislike()" />
+        {{answer.likes}}<img src="./assests/happy.png" class="happy" ng-click="like(answer._id)" />
+        {{answer.dislikes}}<img src="./assests/sad1.png" class="sad" ng-click="dislike(answer._id)" />
       </div>
     </p>
-    <div style='margin-left: 20px' ng-repeat="comment in Comments">
-
+    <div class="comments">
+      <div style='margin-left: 20px' ng-repeat="comment in answer._comments">
+        <p>
+           <a href="#/user/{{comment._user._id}}">{{comment._user.name}}</a>: {{comment.comment}}
+        </p><br>
+          <input type="text" name="newComment" ng-model="newComment[$index]">
+          <input type="button" ng-click="createComment(answer, $index)" value="Comment">
+      </div>
     </div>
   </div>
 </div>

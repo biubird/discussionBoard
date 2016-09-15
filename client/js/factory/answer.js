@@ -8,9 +8,18 @@ myApp.factory('AnswerFactory', function($http){
   };
 
   factory.createAnswer = function(newAnswer, callback){
-    // console.log(answer);
     $http.post('/answers', newAnswer).success(function(response){
-      console.log(response);
+      callback(response);
+    })
+  };
+
+  factory.like = function(answerId, callback){
+    $http.get('/answers/like/'+answerId).success(function(response){
+      callback(response);
+    })
+  };
+  factory.dislike = function(answerId, callback){
+    $http.get('/answers/dislike/'+answerId).success(function(response){
       callback(response);
     })
   };

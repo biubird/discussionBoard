@@ -18,7 +18,8 @@ module.exports = function(app){
   app.get('/answers', answers.index);
   app.get('/answers/:id', answers.show);
   app.post('/answers', answers.create);
-  app.post('/answers/like/:id', answers.like);
+  app.get('/answers/like/:id', answers.like);
+  app.get('/answers/dislike/:id', answers.dislike);
 
   // <!--Comments-->
   app.get('/comments', comments.index);
